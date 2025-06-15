@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Customer Churn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Prediksi Customer Churn Bank 🏦</h1>
+        <p>Masukkan data pelanggan baru untuk memprediksi kemungkinan churn.</p>
+        
+        <form action="{{ url_for('predict') }}" method="post">
+            
+            <label for="credit_score">Skor Kredit (300-850):</label>
+            <input type="number" id="credit_score" name="credit_score" required>
+            
+            <label for="age">Usia:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="balance">Saldo:</label>
+            <input type="number" step="any" id="balance" name="balance" required>
+
+            <label for="num_of_products">Jumlah Produk Bank:</label>
+            <input type="number" id="num_of_products" name="num_of_products" required>
+
+            <label for="geography">Lokasi Geografis:</label>
+            <select id="geography" name="geography">
+                <option value="France">Prancis</option>
+                <option value="Germany">Jerman</option>
+                <option value="Spain">Spanyol</option>
+            </select>
+            
+            <label for="gender">Jenis Kelamin:</label>
+            <select id="gender" name="gender">
+                <option value="Male">Pria</option>
+                <option value="Female">Wanita</option>
+            </select>
+
+            <label for="is_active_member">Anggota Aktif?</label>
+            <select id="is_active_member" name="is_active_member">
+                <option value="1">Ya</option>
+                <option value="0">Tidak</option>
+            </select>
+
+            <button type="submit">Prediksi</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            <h2>Hasil Prediksi:</h2>
+            <p class="prediction">{{ prediction_text }}</p>
+            <p class="recommendation">{{ recommendation_text }}</p>
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+</html>

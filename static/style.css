@@ -1,0 +1,108 @@
+/* --- Pengaturan Dasar Body --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9; /* Warna latar belakang abu-abu lembut */
+    color: #333; /* Warna teks utama */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* --- Kontainer Utama --- */
+.container {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Efek bayangan agar 'melayang' */
+    width: 100%;
+    max-width: 550px;
+}
+
+/* --- Judul dan Teks --- */
+h1 {
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* --- Styling Form --- */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Penting agar padding tidak mengubah lebar */
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus,
+select:focus {
+    border-color: #5b3a9a; /* Warna highlight saat di-klik */
+    outline: none;
+}
+
+/* --- Tombol Prediksi --- */
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%); /* Gradient ungu-biru */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.02); /* Sedikit membesar saat disentuh mouse */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Area Hasil Prediksi --- */
+.result {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f0f4ff; /* Latar belakang biru sangat muda */
+    border-left: 5px solid #2575fc; /* Garis aksen biru */
+    border-radius: 8px;
+    text-align: center;
+}
+
+.result h2 {
+    margin-top: 0;
+    color: #4a4a4a;
+}
+
+.result .prediction {
+    font-size: 22px;
+    font-weight: bold;
+    color: #d9534f; /* Warna merah untuk menyorot probabilitas churn */
+}
+
+.result .recommendation {
+    font-style: italic;
+    color: #555;
+    margin-top: 10px;
+}
