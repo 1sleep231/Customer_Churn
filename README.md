@@ -108,5 +108,5 @@ cd your-repo
 pip install -r requirements.txt
 python app.py
 
-### 📸 Application Preview
-![alt text](image.png)
+📸 Application Preview
+![alt text](screenshot.png)
