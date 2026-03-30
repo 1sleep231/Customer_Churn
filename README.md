@@ -102,11 +102,11 @@ Model telah diimplementasikan dalam bentuk aplikasi web menggunakan Flask.
 - Output probabilitas churn
 
 ### ▶️ Run Locally:
-```bash
+
 git clone https://github.com/your-username/your-repo.git
 cd your-repo
 pip install -r requirements.txt
 python app.py
 
-📸 Application Preview
-![alt text](screenshot.png)
+## Screenshot App
+![Flask App](image.png)
