@@ -1,108 +1,395 @@
-/* --- Pengaturan Dasar Body --- */
+/* ==========================================================================
+   CSS VARIABLES & GLOBAL (Tema diselaraskan dengan portofolio)
+   ========================================================================== */
+:root {
+    --bg: #07090F;
+    --surface: #111520;
+    --surface-light: #1A202C;
+    --border: #2A3441;
+    --cyan: #00C8E0;
+    --cyan-dim: rgba(0, 200, 224, 0.15);
+    --text: #E2E8F0;
+    --muted: #94A3B8;
+    --danger: #FF4D4D;
+    --danger-dim: rgba(255, 77, 77, 0.15);
+    --safe: #10B981;
+    --safe-dim: rgba(16, 185, 129, 0.15);
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f9; /* Warna latar belakang abu-abu lembut */
-    color: #333; /* Warna teks utama */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
     margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* --- Kontainer Utama --- */
-.container {
-    background-color: white;
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Efek bayangan agar 'melayang' */
+/* --- Navbar --- */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+.nav-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--cyan);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+/* --- Layout Grid --- */
+.app-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    align-items: start;
+}
+
+/* --- Panel Kiri (Form) --- */
+.prediction-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.panel-header h1 {
+    font-size: 24px;
+    margin: 0 0 8px 0;
+}
+
+.panel-header p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--muted);
+}
+
+input[type="number"], select {
     width: 100%;
-    max-width: 550px;
+    padding: 12px;
+    background: var(--surface-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
 }
 
-/* --- Judul dan Teks --- */
-h1 {
-    color: #4a4a4a;
+input[type="number"]:focus, select:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px var(--cyan-dim);
+}
+
+/* Sembunyikan spinner di input number */
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--cyan);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--cyan-dim);
+}
+
+/* --- Panel Kanan (Intelligence) --- */
+.info-card {
+    background: transparent;
+}
+
+.info-card h2 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-section {
+    margin-bottom: 24px;
+}
+
+.info-section h3 {
+    font-size: 16px;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.info-section p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+.highlight-box {
+    background: var(--surface);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 3px solid var(--cyan);
+}
+
+.highlight-box p strong {
+    color: var(--cyan);
+}
+
+.references h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.references ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.references li {
+    margin-bottom: 6px;
+}
+
+.references a {
+    color: var(--cyan);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.references a:hover {
+    text-decoration: underline;
+}
+
+/* --- Kotak Hasil Prediksi --- */
+.result-box {
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 12px;
     text-align: center;
+    animation: fadeDown 0.4s ease;
+}
+
+.result-box.danger {
+    background: var(--danger-dim);
+    border: 1px solid var(--danger);
+}
+
+.result-box.danger .prediction-text { color: var(--danger); }
+
+.result-box.safe {
+    background: var(--safe-dim);
+    border: 1px solid var(--safe);
+}
+
+.result-box.safe .prediction-text { color: var(--safe); }
+
+.result-header {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.prediction-text {
+    font-size: 24px;
+    margin: 0 0 12px 0;
+}
+
+.recommendation-text {
+    font-size: 13px;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Animasi */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 900px) {
+    .app-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .top-nav {
+        padding: 16px 20px;
+    }
+}
+
+/* --- Fitur Guide List --- */
+.feature-guide-list {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.feature-guide-list li {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
     margin-bottom: 10px;
 }
 
-p {
-    text-align: center;
-    color: #666;
-    margin-bottom: 30px;
-}
-
-/* --- Styling Form --- */
-label {
+.feature-guide-list li strong {
+    color: var(--text);
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
+    font-size: 14px;
 }
 
-input[type="number"],
-select {
-    width: 100%;
-    padding: 12px;
+/* Modifikasi warna border khusus untuk box context agar beda dari box intelligence */
+.highlight-box {
     margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box; /* Penting agar padding tidak mengubah lebar */
-    font-size: 16px;
-    transition: border-color 0.3s;
 }
 
-input[type="number"]:focus,
-select:focus {
-    border-color: #5b3a9a; /* Warna highlight saat di-klik */
-    outline: none;
-}
-
-/* --- Tombol Prediksi --- */
-button {
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%); /* Gradient ungu-biru */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    transition: transform 0.2s;
-}
-
-button:hover {
-    transform: scale(1.02); /* Sedikit membesar saat disentuh mouse */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* --- Area Hasil Prediksi --- */
-.result {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #f0f4ff; /* Latar belakang biru sangat muda */
-    border-left: 5px solid #2575fc; /* Garis aksen biru */
-    border-radius: 8px;
-    text-align: center;
-}
-
-.result h2 {
-    margin-top: 0;
-    color: #4a4a4a;
-}
-
-.result .prediction {
-    font-size: 22px;
-    font-weight: bold;
-    color: #d9534f; /* Warna merah untuk menyorot probabilitas churn */
-}
-
-.result .recommendation {
-    font-style: italic;
-    color: #555;
+/* --- Styling Tombol Sampel --- */
+.sample-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-top: 10px;
+}
+
+.btn-sample {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--surface-light);
+    color: var(--text);
+    transition: all 0.2s ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-sample i { font-size: 14px; }
+
+/* --- Styling Baru untuk Quick Fill di Panel Kiri --- */
+.quick-fill-section {
+    background: var(--surface-light);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.quick-fill-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.sample-btns-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Membuat 2 kolom sejajar */
+    gap: 12px;
+}
+
+.btn-sample {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--bg);
+    color: var(--text);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Hover Effects tetap sama seperti sebelumnya */
+.btn-sample.danger:hover {
+    background: var(--danger-dim);
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+.btn-sample.safe:hover {
+    background: var(--safe-dim);
+    border-color: var(--safe);
+    color: var(--safe);
+}
+
+/* Responsif Mobile: Kembali tumpuk vertikal jika layar kecil */
+@media (max-width: 600px) {
+    .sample-btns-row { grid-template-columns: 1fr; }
 }
